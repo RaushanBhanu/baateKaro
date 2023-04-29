@@ -8,8 +8,13 @@ import LoginPage from "./screens/LoginPage";
 import "./styles/App.css";
 import "./styles/common.css";
 import "./styles/input.css";
+import Dashboard from "./screens/Dashboard";
 
 function App() {
+  const uid = "";
+  if (uid) {
+    return <Dashboard />;
+  }
   return (
     <div className="App">
       {/* <UserBox /> */}
