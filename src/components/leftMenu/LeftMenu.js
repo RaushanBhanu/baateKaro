@@ -4,12 +4,26 @@ import { IoMdNotifications } from "react-icons/io";
 import { useState } from "react";
 import LogoutBtn from "./LogoutBtn";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { getAuth, signOut } from "firebase/auth";
 
 const LeftMenu = ({
   username = "Username",
   email = "username@gmail.com",
   img = "",
 }) => {
+  // LOGOUT
+  const auth = getAuth();
+  const logoutFirebase = async () => {
+    await signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(error);
+      });
+  };
+
   const [open, setOpen] = useState(true);
   const [active, setActive] = useState("Messages");
   const userImgSize = open ? 60 : 40;
@@ -92,7 +106,7 @@ const LeftMenu = ({
             {/* LOGOUT BUTTON */}
             {open && (
               <div style={{ marginLeft: 30 }}>
-                <LogoutBtn />
+                <LogoutBtn onClick={logoutFirebase} />
               </div>
             )}
             {/* CLOSE BTN */}

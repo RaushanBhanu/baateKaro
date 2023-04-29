@@ -5,9 +5,27 @@ import "./styles/App.css";
 import "./styles/common.css";
 import "./styles/input.css";
 import Dashboard from "./screens/Dashboard";
+import { useEffect, useState } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useCookies } from "react-cookie";
 
 function App() {
-  const uid = "";
+  const auth = getAuth();
+  const [uid, setUid] = useState("");
+  const [cookies, setCookies] = useCookies();
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUid(user.uid);
+      setCookies(
+        "user",
+        JSON.stringify({
+          uid: user.uid,
+          name: user.displayName,
+          email: user.email,
+        })
+      );
+    });
+  }, [auth]);
   if (uid) {
     return <Dashboard />;
   }

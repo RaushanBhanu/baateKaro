@@ -1,9 +1,11 @@
 import { BiLogOut } from "react-icons/bi";
-const LogoutBtn = () => {
+const LogoutBtn = ({ onClick, disabled }) => {
   return (
     <>
       {/* LOGOUT BTN */}
       <button
+        onClick={onClick}
+        disabled={disabled}
         className="frc"
         style={{
           boxSizing: "border-box",

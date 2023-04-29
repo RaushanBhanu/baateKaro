@@ -2,9 +2,32 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/BlueButton";
 import TextBox from "../components/common/TextBox";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 const LoginPage = () => {
+  const auth = getAuth();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const onLogin = async () => {
+    setLoading(true);
+    await signInWithEmailAndPassword(auth, email, pass)
+      .then((userCredential) => {
+        // Signed in
+        // const user = userCredential.user;
+        alert("Logged in successfully 👍!");
+        // ...
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        // const errorCode = error.code;
+        alert(`Failed to login\n\n${errorMessage}`);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
   return (
     <>
       <div className="h-[35rem]" style={{ background: "var(--lblueGrad)" }}>
@@ -40,7 +63,7 @@ const LoginPage = () => {
               inputClass={"pl-4"}
               type="password"
             />
-            <Button text={"Login"} />
+            <Button disabled={loading} text={"Login"} onclick={onLogin} />
             <div className="mt-10 text-[13px]">
               <span className="opacity-50 mr-2">Don't have an account?</span>
               <span className="opacity-100 cursor-pointer">Create</span>

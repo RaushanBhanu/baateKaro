@@ -1,4 +1,3 @@
-import { MdNearMe } from "react-icons/md";
 import { toCapitalise } from "../common/CommonFunctions";
 const UserBox = ({
   name = "username",
