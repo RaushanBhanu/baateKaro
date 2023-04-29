@@ -1,7 +1,7 @@
-
 import LeftMenu from "./components/leftMenu/LeftMenu";
 import Dashboard from "./screens/Dashboard";
-import Home from "./screens/Home";
+import Login from "./screens/Login";
+import LoginPage from "./screens/LoginPage";
 // import SearchBox from "./components/SearchBox";
 // import UserBox from "./components/UserBox";
 // import UserSelector from "./components/dashboard/UserSelector";
@@ -17,7 +17,9 @@ function App() {
       {/* <UserSelector /> */}
       {/* <LeftMenu/> */}
       {/* <Home/> */}
-      <Dashboard/>
+      {/* <Dashboard/> */}
+      <LoginPage/>
+      {/* <Login/> */}
     </div>
   );
 }
