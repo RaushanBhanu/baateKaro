@@ -3,7 +3,7 @@ import './styles/App.css';
 import './styles/common.css';
 import './styles/input.css'
 import Login from './screens/Login.js';
-
+import LoginPage from './screens/LoginPage';
 function App() {
   const handleclick = () => {
     console.log("Button clicked")
@@ -12,7 +12,8 @@ function App() {
     <div className="App">
       {/* <h1 className=''>Hello</h1> */}
       {/* <Button text="Click Me" onClick={handleclick} /> */}
-      <Login/>
+      {/* <Login/> */}
+      <LoginPage/>
     </div>
   );
 }

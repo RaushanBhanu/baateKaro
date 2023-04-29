@@ -6,23 +6,20 @@
   --darker: #161819;
   --primary: #0c68e6;
   --blueGrad: linear-gradient(0deg, #181a1b 3.58%, #0c69ea 100%);
-  --lBlueGradHori: linear-gradient(
-    90deg,
-    #43cdfd 0%,
-    #40cbfd 18.23%,
-    #0c67e5 100%
-  );
-  --lBlueGradVert: linear-gradient(
-    180deg,
-    #43cdfd 0%,
-    #40cbfd 18.23%,
-    #0c67e5 100%
-  );
+  --lblueGrad: linear-gradient(0deg, rgba(24, 26, 27, 0.2) 3.58%, rgba(12, 105, 234, 0.79) 100%);
+  --lBlueGradHori: linear-gradient(90deg,
+      #43cdfd 0%,
+      #40cbfd 18.23%,
+      #0c67e5 100%);
+  --lBlueGradVert: linear-gradient(180deg,
+      #43cdfd 0%,
+      #40cbfd 18.23%,
+      #0c67e5 100%);
 }
 
 /* COMMON */
-img{
-background-color: #333741;
+img {
+  background-color: #333741;
 }
 
 body {
@@ -51,14 +48,16 @@ h3 {
   font-size: 24px;
   font-weight: 600;
 }
+
 h3 {
   font-size: 18px;
 }
 
 /* COLORS */
-.paraColor{
+.paraColor {
   opacity: 0.6;
 }
-.lightText{
+
+.lightText {
   opacity: 0.4;
 }

@@ -9,12 +9,12 @@ const Login = () => {
                 </div>
                 <div className="flex">
                     <div className="mr-10 pt-1 cursor-pointer">About Us</div>
-                    <div className=" mr-5 cursor-pointer" id="logo" style={{fontSize:"17px"}}>Login</div>
+                    <div className=" mr-5 cursor-pointer" id="logo" style={{ fontSize: "17px" }}>Login</div>
                 </div>
             </div>
             <div className="ml-8 mr-8 flex justify-center items-center h-[55rem] rounded-2xl" style={{ background: "var(--blueGrad)" }}>
                 <div className="text-center">
-                    <div className="mb-16" id="logo" style={{fontSize:"90px"}}>
+                    <div className="mb-16" id="logo" style={{ fontSize: "90px" }}>
                         Baate Karo
                     </div>
                     <div className="mb-20">
