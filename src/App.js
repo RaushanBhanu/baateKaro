@@ -1,16 +1,23 @@
-import Button from './components/BlueButton';
-import './styles/App.css';
-import './styles/common.css';
-import './styles/input.css'
-import Login from './screens/Login.js';
-import LoginPage from './screens/LoginPage';
+
+import LeftMenu from "./components/leftMenu/LeftMenu";
+import Dashboard from "./screens/Dashboard";
+import Home from "./screens/Home";
+// import SearchBox from "./components/SearchBox";
+// import UserBox from "./components/UserBox";
+// import UserSelector from "./components/dashboard/UserSelector";
+import "./styles/App.css";
+import "./styles/common.css";
+import "./styles/input.css";
+
 function App() {
   return (
     <div className="App">
-      {/* <h1 className=''>Hello</h1> */}
-      {/* <Button text="Click Me" onClick={handleclick} /> */}
-      {/* <Login/> */}
-      <LoginPage/>
+      {/* <UserBox /> */}
+      {/* <SearchBox /> */}
+      {/* <UserSelector /> */}
+      {/* <LeftMenu/> */}
+      {/* <Home/> */}
+      <Dashboard/>
     </div>
   );
 }

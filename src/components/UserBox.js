@@ -1,33 +1,44 @@
+import { MdNearMe } from "react-icons/md";
 import { toCapitalise } from "../common/CommonFunctions";
 const UserBox = ({
-  username = "username",
+  name = "username",
   status = "texting...",
   time = "10h",
+  style = {},
+  activeUser = "",
+  setActiveUser = () => {},
 }) => {
+  const active = activeUser === name;
   return (
     <>
-      <div
-        className="frc normalBg br10"
+      <button
+        className={`frc ${active ? "normalBg" : ""} br10`}
         style={{
           height: 76,
           padding: "10px 8px",
           maxWidth: 363,
+          boxSizing: "border-box",
+          ...style,
+        }}
+        onClick={() => {
+          setActiveUser(name);
         }}
       >
         {/* PROFILE ICON */}
         <div className="">
           <img className="br10" height={60} width={60} alt="userProfile" />
         </div>
-        <div className="ml20 fccsb" style={{}}>
+        <div className="ml20 fcfs" style={{}}>
           {/* USERNAME */}
-          <div className="medi14 mb5">{toCapitalise(username)}</div>
+          <div className="medi14 mb5">{toCapitalise(name)}</div>
           {/* STATUS */}
           <div className="regu13 paraColor">
             {status}
+            {`  •  `}
             {time}
           </div>
         </div>
-      </div>
+      </button>
     </>
   );
 };
