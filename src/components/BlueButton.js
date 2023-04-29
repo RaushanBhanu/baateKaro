@@ -1,9 +1,9 @@
-const Button = ({ text, onclick, disabled }) => {
+const Button = ({ text, onclick, disabled, width = "100%" }) => {
   return (
     <div>
       <button
         disabled={disabled}
-        className="pt-3 pb-3 rounded-2xl font-bold w-[320px]"
+        className={`pt-3 pb-3 rounded-2xl font-bold w-[${width}]`}
         onClick={onclick}
         style={{
           background: "var(--lBlueGradHori)",

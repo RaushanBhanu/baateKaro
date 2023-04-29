@@ -126,6 +126,7 @@ const LoginPage = () => {
               type="password"
             />
             <Button
+            width="320px"
               disabled={loading}
               text={
                 loading
@@ -137,12 +138,16 @@ const LoginPage = () => {
               onclick={toCreateAccount ? createFirebaseAccount : onLogin}
             />
             <div className="mt-10 text-[13px]">
-              <span className="opacity-50 mr-2">Don't have an account?</span>
+              <span className="opacity-50 mr-2">
+                {!toCreateAccount
+                  ? "Don't have an account?"
+                  : "Already have an account?"}
+              </span>
               <span
                 onClick={handleClick}
                 className="opacity-100 cursor-pointer"
               >
-                Create
+                {!toCreateAccount ? "Create" : "Login"}
               </span>
             </div>
           </div>
