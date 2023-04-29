@@ -10,6 +10,7 @@ const TextBox = ({
   inputClass,
   style,
   outerClass,
+  maxLength
 }) => {
   return (
     <>
@@ -34,6 +35,7 @@ const TextBox = ({
             height: "100%",
             ...inputStyle,
           }}
+          maxLength={maxLength}
         />
         {element}
       </div>
