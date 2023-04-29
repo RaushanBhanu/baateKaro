@@ -18,14 +18,9 @@ const UserBox = ({
         <div className="">
           <img className="br10" height={60} width={60} alt="userProfile" />
         </div>
-        <div
-          className="ml20 fccsb"
-          style={{
-            height: "100%",
-          }}
-        >
+        <div className="ml20 fccsb" style={{}}>
           {/* USERNAME */}
-          <div className="medi14">{toCapitalise(username)}</div>
+          <div className="medi14 mb5">{toCapitalise(username)}</div>
           {/* STATUS */}
           <div className="regu13 paraColor">
             {status}

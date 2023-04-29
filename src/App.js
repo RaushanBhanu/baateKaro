@@ -5,9 +5,6 @@ import './styles/input.css'
 import Login from './screens/Login.js';
 import LoginPage from './screens/LoginPage';
 function App() {
-  const handleclick = () => {
-    console.log("Button clicked")
-  }
   return (
     <div className="App">
       {/* <h1 className=''>Hello</h1> */}

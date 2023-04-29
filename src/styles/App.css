@@ -5,6 +5,7 @@
   --darkest: #181a1b;
   --darker: #161819;
   --primary: #0c68e6;
+  --lightBorder: #373a41;
   --blueGrad: linear-gradient(0deg, #181a1b 3.58%, #0c69ea 100%);
   --lblueGrad: linear-gradient(0deg, rgba(24, 26, 27, 0.2) 3.58%, rgba(12, 105, 234, 0.79) 100%);
   --lBlueGradHori: linear-gradient(90deg,
@@ -26,6 +27,14 @@ body {
   background-color: var(--darkest);
   color: #ffffff;
   font-family: "Poppins", sans-serif;
+}
+
+input {
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+button{
+  background: none;
 }
 
 /* BACKGROUNDS */
