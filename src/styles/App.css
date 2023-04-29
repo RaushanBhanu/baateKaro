@@ -1,38 +1,64 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --dark: #27292e;
+  --darkest: #181a1b;
+  --darker: #161819;
+  --primary: #0c68e6;
+  --blueGrad: linear-gradient(0deg, #181a1b 3.58%, #0c69ea 100%);
+  --lBlueGradHori: linear-gradient(
+    90deg,
+    #43cdfd 0%,
+    #40cbfd 18.23%,
+    #0c67e5 100%
+  );
+  --lBlueGradVert: linear-gradient(
+    180deg,
+    #43cdfd 0%,
+    #40cbfd 18.23%,
+    #0c67e5 100%
+  );
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* COMMON */
+img{
+background-color: #333741;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: var(--darkest);
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* BACKGROUNDS */
+.normalBg {
+  background-color: var(--dark);
+  box-sizing: border-box;
 }
 
-.App-link {
-  color: #61dafb;
+/* TEXT */
+#logo {
+  font-family: "Lobster";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2,
+h3 {
+  font-size: 24px;
+  font-weight: 600;
+}
+h3 {
+  font-size: 18px;
+}
+
+/* COLORS */
+.paraColor{
+  opacity: 0.6;
+}
+.lightText{
+  opacity: 0.4;
 }
