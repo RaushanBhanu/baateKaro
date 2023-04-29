@@ -2,8 +2,7 @@ import Button from './components/BlueButton';
 import './styles/App.css';
 import './styles/common.css';
 import './styles/input.css'
-import './screens/Login'
-import Login from './screens/Login';
+import Login from './screens/Login.js';
 
 function App() {
   const handleclick = () => {
