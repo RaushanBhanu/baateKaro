@@ -2,11 +2,11 @@ import { BiLogOut } from "react-icons/bi";
 const LogoutBtn = () => {
   return (
     <>
-    {/* LOGOUT BTN */}
+      {/* LOGOUT BTN */}
       <button
         className="frc"
         style={{
-          boxSizing:"border-box"
+          boxSizing: "border-box",
         }}
       >
         <BiLogOut size={24} />

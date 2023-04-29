@@ -12,8 +12,8 @@ const LeftMenu = ({
 }) => {
   const [open, setOpen] = useState(true);
   const [active, setActive] = useState("Messages");
-  const userImgSize = open?60:40
-  const mainWidth = open?210:80
+  const userImgSize = open ? 60 : 40;
+  const mainWidth = open ? 210 : 80;
   const onClick = (active) => {
     console.log(active);
     setActive(active);
@@ -88,18 +88,20 @@ const LeftMenu = ({
           style={{ width: mainWidth, bottom: 0, position: "absolute" }}
         >
           <div className="darkLine mt20" style={{ width: mainWidth }} />
-          <div className={`${open?"frcsb":"fcc"} w100`}>
+          <div className={`${open ? "frcsb" : "fcc"} w100`}>
             {/* LOGOUT BUTTON */}
-            {open&&<div style={{ marginLeft: 30 }}>
-              <LogoutBtn />
-            </div>}
+            {open && (
+              <div style={{ marginLeft: 30 }}>
+                <LogoutBtn />
+              </div>
+            )}
             {/* CLOSE BTN */}
             <button
               style={{
-                borderLeft: open?"1px solid var(--dark)":"unset",
+                borderLeft: open ? "1px solid var(--dark)" : "unset",
                 height: 50,
                 width: 50,
-                alignSelf:"center"
+                alignSelf: "center",
               }}
               onClick={() => {
                 setOpen(!open);

@@ -1,4 +1,6 @@
 import LeftMenu from "./components/leftMenu/LeftMenu";
+import Dashboard from "./screens/Dashboard";
+import Home from "./screens/Home";
 // import SearchBox from "./components/SearchBox";
 // import UserBox from "./components/UserBox";
 // import UserSelector from "./components/dashboard/UserSelector";
@@ -12,7 +14,9 @@ function App() {
       {/* <UserBox /> */}
       {/* <SearchBox /> */}
       {/* <UserSelector /> */}
-      <LeftMenu/>
+      {/* <LeftMenu/> */}
+      {/* <Home/> */}
+      <Dashboard/>
     </div>
   );
 }

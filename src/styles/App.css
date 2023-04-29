@@ -73,7 +73,7 @@ button {
 }
 
 /* LINES */
-.darkLine{
+.darkLine {
   position: relative;
   left: 0px;
   width: "100%";
@@ -81,11 +81,16 @@ button {
   border: 0;
   height: 1px;
 }
-.darkLineVert{
+.darkLineVert {
   position: relative;
   left: 0px;
   width: 1px;
   background: var(--dark);
   border: 0;
   height: 1px;
+}
+
+input::placeholder{
+  font-size: 14px;
+  font-weight: 400;
 }
