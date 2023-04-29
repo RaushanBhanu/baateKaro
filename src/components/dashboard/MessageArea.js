@@ -5,6 +5,7 @@ import {
   AiOutlinePhone,
 } from "react-icons/ai";
 import { TbSend } from "react-icons/tb";
+import { BsFillEmojiHeartEyesFill } from 'react-icons/bs'
 
 const MessageArea = ({ name = "Username", img }) => {
   const iconSize = 24;
@@ -65,6 +66,9 @@ const MessageArea = ({ name = "Username", img }) => {
             height: "100%",
           }}
         />
+        <button className={`mr-4`}>
+          <BsFillEmojiHeartEyesFill size={20} />
+        </button>
         <button>
           <TbSend size={20} />
         </button>
