@@ -5,6 +5,7 @@
   --darkest: #181a1b;
   --darker: #161819;
   --primary: #0c68e6;
+  --lightBorder: #373a41;
   --blueGrad: linear-gradient(0deg, #181a1b 3.58%, #0c69ea 100%);
   --lBlueGradHori: linear-gradient(
     90deg,
@@ -21,14 +22,22 @@
 }
 
 /* COMMON */
-img{
-background-color: #333741;
+img {
+  background-color: #333741;
 }
 
 body {
   background-color: var(--darkest);
   color: #ffffff;
   font-family: "Poppins", sans-serif;
+}
+
+input {
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+button{
+  background: none;
 }
 
 /* BACKGROUNDS */
@@ -56,9 +65,9 @@ h3 {
 }
 
 /* COLORS */
-.paraColor{
+.paraColor {
   opacity: 0.6;
 }
-.lightText{
+.lightText {
   opacity: 0.4;
 }
