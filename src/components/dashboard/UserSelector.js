@@ -1,8 +1,10 @@
 import { MdPersonAddAlt } from "react-icons/md";
 import SearchBox from "../SearchBox";
 import UserList from "./UserList";
+import { useState } from "react";
 
 const UserSelector = () => {
+  const [activeUser, setActiveUser] = useState("Username");
   const addUserBtn = () => {};
   const pinnedUsers = [
     {
@@ -51,11 +53,20 @@ const UserSelector = () => {
           <SearchBox />
           {/* PINNED DROPDOWN */}
           <div className="mt20">
-            <UserList heading={"Pinned"} users={pinnedUsers} />
+            <UserList
+              heading={"Pinned"}
+              users={pinnedUsers}
+              activeUser={activeUser}
+              setActiveUser={setActiveUser}
+            />
           </div>
-
           <div className="mt20">
-            <UserList heading={"All Messages"} users={allUsers} />
+            <UserList
+              heading={"All Messages"}
+              users={allUsers}
+              setActiveUser={setActiveUser}
+              activeUser={activeUser}
+            />
           </div>
         </div>
       </div>

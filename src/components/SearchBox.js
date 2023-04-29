@@ -9,11 +9,12 @@ const SearchBox = () => {
       element={
         <>
           <button onClick={onSearch}>
-            <BiSearch size={24} color="white" />
+            <BiSearch size={20} color="white" />
           </button>
         </>
       }
       placeholder="Search..."
+      inputClass={"regu13"}
       input={input}
       onChange={(e) => {
         // console.log(e.target.value);
