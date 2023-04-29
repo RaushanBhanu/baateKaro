@@ -12,7 +12,7 @@ const LogoutBtn = ({ onClick, disabled }) => {
         }}
       >
         <BiLogOut size={24} />
-        <div className="frc ml10 medi14">Logout</div>
+        <div className="frc ml10 medi14">{disabled ? "Loading" : "Logout"}</div>
       </button>
     </>
   );

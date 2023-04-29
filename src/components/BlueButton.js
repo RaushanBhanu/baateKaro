@@ -3,7 +3,7 @@ const Button = ({ text, onclick, disabled }) => {
     <div>
       <button
         disabled={disabled}
-        className="pl-32 pr-32 pt-5 pb-5 rounded-2xl font-bold w-[100%]"
+        className="pt-3 pb-3 rounded-2xl font-bold w-[320px]"
         onClick={onclick}
         style={{
           background: "var(--lBlueGradHori)",

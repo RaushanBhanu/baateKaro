@@ -5,6 +5,8 @@ import { useState } from "react";
 import LogoutBtn from "./LogoutBtn";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { getAuth, signOut } from "firebase/auth";
+import { removeCookies } from "../../cookies";
+import { firebaseApp } from "../../firebase";
 
 const LeftMenu = ({
   username = "Username",
@@ -12,18 +14,25 @@ const LeftMenu = ({
   img = "",
 }) => {
   // LOGOUT
-  const auth = getAuth();
+  const auth = getAuth(firebaseApp);
+  const [loading, setLoading] = useState(null);
   const logoutFirebase = async () => {
+    setLoading(true);
     await signOut(auth)
       .then(() => {
         // Sign-out successful.
+        removeCookies("user");
+        alert("logged out successfully");
       })
       .catch((error) => {
         // An error happened.
         console.log(error);
+        alert("logged out failed");
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
-
   const [open, setOpen] = useState(true);
   const [active, setActive] = useState("Messages");
   const userImgSize = open ? 60 : 40;
@@ -106,7 +115,7 @@ const LeftMenu = ({
             {/* LOGOUT BUTTON */}
             {open && (
               <div style={{ marginLeft: 30 }}>
-                <LogoutBtn onClick={logoutFirebase} />
+                <LogoutBtn onClick={logoutFirebase} disabled={loading} />
               </div>
             )}
             {/* CLOSE BTN */}

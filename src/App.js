@@ -1,29 +1,35 @@
+import Dashboard from "./screens/Dashboard";
 import LoginPage from "./screens/LoginPage";
-import Home from "./screens/Home";
-import { Route, Routes } from "react-router-dom";
 import "./styles/App.css";
 import "./styles/common.css";
 import "./styles/input.css";
-import Dashboard from "./screens/Dashboard";
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useCookies } from "react-cookie";
+import { Routes, Route } from "react-router-dom";
+import Home from "./screens/Home";
+import { firebaseApp } from "./firebase";
 
 function App() {
-  const auth = getAuth();
+  const auth = getAuth(firebaseApp);
   const [uid, setUid] = useState("");
-  const [cookies, setCookies] = useCookies();
+  const [cookies, setCookies, removeCookies] = useCookies();
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      setUid(user.uid);
-      setCookies(
-        "user",
-        JSON.stringify({
-          uid: user.uid,
-          name: user.displayName,
-          email: user.email,
-        })
-      );
+      if (user?.uid) {
+        setUid(user.uid);
+        setCookies(
+          "user",
+          JSON.stringify({
+            uid: user.uid,
+            name: user.displayName,
+            email: user.email,
+          })
+        );
+      } else {
+        removeCookies("user");
+        setUid("");
+      }
     });
   }, [auth]);
   if (uid) {
