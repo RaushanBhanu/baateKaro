@@ -1,53 +1,73 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SimplePeer from 'simple-peer';
 
-const Video = () => {
+const VideoCall = () => {
   const [localStream, setLocalStream] = useState(null);
   const [remoteStream, setRemoteStream] = useState(null);
   const [peer, setPeer] = useState(null);
-  const videoRef = useRef(null);
+  const localVideoRef = useRef(null);
+  const remoteVideoRef = useRef(null);
 
   useEffect(() => {
-    // Get access to user's camera and microphone
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((stream) => {
         setLocalStream(stream);
-        videoRef.current.srcObject = stream;
+        localVideoRef.current.srcObject = stream;
       })
       .catch((error) => console.error('Error accessing media devices:', error));
   }, []);
 
   const startCall = () => {
-    // Create new Simple Peer instance
     const newPeer = new SimplePeer({
       initiator: true,
       trickle: false,
     });
 
-    // Set up event listeners
     newPeer.on('signal', (data) => {
       // Send signal data to remote peer
     });
+
+    newPeer.on('connect', () => {
+      console.log('Peer connection established');
+    });
+
     newPeer.on('stream', (stream) => {
       setRemoteStream(stream);
+      remoteVideoRef.current.srcObject = stream;
     });
+
     newPeer.on('error', (error) => console.error('Peer error:', error));
 
     setPeer(newPeer);
   };
 
+  const handleSignalData = (data) => {
+    if (peer) {
+      peer.signal(data);
+    }
+  };
+
   const endCall = () => {
     if (peer) {
-      peer.destroy();
+      peer.end();
       setPeer(null);
+    }
+    if (localStream) {
+      const tracks = localStream.getTracks();
+      tracks.forEach((track) => track.stop());
+      setLocalStream(null);
+    }
+    if (remoteStream) {
+      const tracks = remoteStream.getTracks();
+      tracks.forEach((track) => track.stop());
       setRemoteStream(null);
     }
   };
 
   return (
     <div>
-      <video ref={videoRef} autoPlay muted />
-      {remoteStream && <video srcObject={remoteStream} autoPlay />}
+      <video ref={localVideoRef} autoPlay muted />
+      <video ref={remoteVideoRef} autoPlay />
       <button onClick={startCall}>Start Call</button>
       <button onClick={endCall}>End Call</button>
     </div>

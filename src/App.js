@@ -7,7 +7,7 @@ import Dashboard from "./screens/Dashboard";
 import Home from "./screens/Home";
 import LoginPage from "./screens/LoginPage";
 import SearchBox from "./components/SearchBox";
-import Video from "./components/videocall/Video";
+import VideoCall from "./components/videocall/VideoCall";
 // import UserBox from "./components/UserBox";
 // import UserSelector from "./components/dashboard/UserSelector";
 
@@ -23,9 +23,9 @@ function App() {
       {/* <UserSelector /> */}
       {/* <LeftMenu/> */}
       {/* <Home/> */}
-      {/* <Dashboard/> */}
+      <Dashboard/>
       {/* <LoginPage/> */}
-      {/* {VideoCall/} */}
+      {/* <VideoCall/> */}
     </div>
   );
 }

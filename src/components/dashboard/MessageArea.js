@@ -6,11 +6,13 @@ import {
 } from "react-icons/ai";
 import { TbSend } from "react-icons/tb";
 import { BsFillEmojiHeartEyesFill } from 'react-icons/bs'
+import {useNavigate} from 'react-router-dom'
 
 const MessageArea = ({ name = "Username", img }) => {
   const iconSize = 24;
   const style = { marginLeft: 30 };
   const [msg, setMsg] = useState("");
+  const navigation = useNavigate();
   return (
     <div className="fccsb" style={{ flex: 1, height: "100%" }}>
       {/* HEADER */}
@@ -34,7 +36,7 @@ const MessageArea = ({ name = "Username", img }) => {
             <AiOutlinePhone size={iconSize} />
           </button>
           {/* VIDEO */}
-          <button style={style}>
+          <button style={style} onClick={()=>{navigation("/video")}}>
             <AiOutlineVideoCamera size={iconSize} />
           </button>
           {/* INFO */}
