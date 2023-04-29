@@ -1,21 +1,25 @@
+import { useNavigate, Link } from "react-router-dom";
 import Button from "../components/BlueButton";
 
-const Login = () => {
+const Home = () => {
+  const navigation = useNavigate();
+
   return (
     <div>
       <div className="flex justify-between pt-5 pb-5 pl-10 pr-10">
-        <div className="cursor-pointer" id="logo">
+        <Link to={"/"} className="cursor-pointer" id="logo">
           Baate karo
-        </div>
+        </Link>
         <div className="flex">
           <div className="pt-1 cursor-pointer">About Us</div>
-          <div
+          <Link
+            to={"login"}
             className="ml-10 cursor-pointer"
             id="logo"
             style={{ fontSize: "17px", color: "var(--primary)" }}
           >
             Login
-          </div>
+          </Link>
         </div>
       </div>
       <div
@@ -27,11 +31,16 @@ const Login = () => {
             Baate Karo
           </div>
           <div className="mb-20">A Real Time Messaging Web App</div>
-          <Button text={"Chaliye Shuru Karte Hai!"} />
+          <Button
+            text={"Chaliye Shuru Karte Hai!"}
+            onclick={() => {
+              navigation("login");
+            }}
+          />
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Home;
