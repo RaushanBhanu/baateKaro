@@ -1,13 +1,15 @@
-import LeftMenu from "./components/leftMenu/LeftMenu";
-import Dashboard from "./screens/Dashboard";
-import Login from "./screens/Home";
-import LoginPage from "./screens/LoginPage";
-// import SearchBox from "./components/SearchBox";
-// import UserBox from "./components/UserBox";
-// import UserSelector from "./components/dashboard/UserSelector";
 import "./styles/App.css";
 import "./styles/common.css";
 import "./styles/input.css";
+
+import LeftMenu from "./components/leftMenu/LeftMenu";
+import Dashboard from "./screens/Dashboard";
+import Home from "./screens/Home";
+import LoginPage from "./screens/LoginPage";
+import SearchBox from "./components/SearchBox";
+import Video from "./components/videocall/Video";
+// import UserBox from "./components/UserBox";
+// import UserSelector from "./components/dashboard/UserSelector";
 
 function App() {
   const uid = "";
@@ -22,8 +24,8 @@ function App() {
       {/* <LeftMenu/> */}
       {/* <Home/> */}
       {/* <Dashboard/> */}
-      <LoginPage/>
-      {/* <Login/> */}
+      {/* <LoginPage/> */}
+      {/* {VideoCall/} */}
     </div>
   );
 }
