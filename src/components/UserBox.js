@@ -1,8 +1,9 @@
 import { toCapitalise } from "../common/CommonFunctions";
 const UserBox = ({
-  username = "username",
+  name = "username",
   status = "texting...",
   time = "10h",
+  style = {}
 }) => {
   return (
     <>
@@ -12,6 +13,7 @@ const UserBox = ({
           height: 76,
           padding: "10px 8px",
           maxWidth: 363,
+          ...style
         }}
       >
         {/* PROFILE ICON */}
@@ -20,10 +22,10 @@ const UserBox = ({
         </div>
         <div className="ml20 fccsb" style={{}}>
           {/* USERNAME */}
-          <div className="medi14 mb5">{toCapitalise(username)}</div>
+          <div className="medi14 mb5">{toCapitalise(name)}</div>
           {/* STATUS */}
           <div className="regu13 paraColor">
-            {status}
+            {status}{`  •  `}
             {time}
           </div>
         </div>

@@ -1,5 +1,7 @@
-import SearchBox from "./components/SearchBox";
-import UserBox from "./components/UserBox";
+import LeftMenu from "./components/leftMenu/LeftMenu";
+// import SearchBox from "./components/SearchBox";
+// import UserBox from "./components/UserBox";
+// import UserSelector from "./components/dashboard/UserSelector";
 import "./styles/App.css";
 import "./styles/common.css";
 import "./styles/input.css";
@@ -7,8 +9,10 @@ import "./styles/input.css";
 function App() {
   return (
     <div className="App">
-      <UserBox />
-      <SearchBox/>
+      {/* <UserBox /> */}
+      {/* <SearchBox /> */}
+      {/* <UserSelector /> */}
+      <LeftMenu/>
     </div>
   );
 }
