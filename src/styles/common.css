@@ -28,12 +28,15 @@ button:focus {
 /* TEXT */
 /* semi, regu, medi, medi12, medi14, regu14, regu13, regu12 */
 
-.semi {
+.semi,.semi16 {
   font-weight: 600;
 }
 
 .medi,
-.medi13 {
+.medi13,
+.medi14,
+.medi12,
+.medi16 {
   font-weight: 500;
 }
 
@@ -41,7 +44,6 @@ button:focus {
 .medi12,
 .regu14 {
   font-size: 14px;
-  font-weight: 500;
 }
 
 .regu14,
@@ -60,6 +62,11 @@ button:focus {
 .medi13 {
   font-size: 13px;
 }
+
+.medi16,.semi16{
+  font-size: 16px;
+}
+
 
 /* TEXT TRANSFORM */
 /* upper, caps */
@@ -341,4 +348,9 @@ input[type="submit"]:hover:enabled,
 }
 .semi14 {
   font-size: 0.875rem;
+}
+
+/* BORDER RADIUS */
+.br10{
+  border-radius: 10px;
 }
