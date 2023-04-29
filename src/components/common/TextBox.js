@@ -9,11 +9,12 @@ const TextBox = ({
   inputStyle,
   inputClass,
   style,
+  outerClass,
 }) => {
   return (
     <>
       <div
-        className="normalBg frc br10"
+        className={`normalBg frc br10 ${outerClass}`}
         style={{
           height: height,
           maxWidth: width,
