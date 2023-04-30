@@ -6,7 +6,9 @@ import LogoutBtn from "./LogoutBtn";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { getAuth, signOut } from "firebase/auth";
 import { removeCookies } from "../../cookies";
+import Avatar from 'react-avatar';
 import { firebaseApp } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 
 const LeftMenu = ({
   username = "Username",
@@ -15,13 +17,17 @@ const LeftMenu = ({
 }) => {
   // LOGOUT
   const auth = getAuth(firebaseApp);
+  const navigation = useNavigate()
   const [loading, setLoading] = useState(null);
   const logoutFirebase = async () => {
     setLoading(true);
     await signOut(auth)
       .then(() => {
         // Sign-out successful.
+        navigation("/")
+        // DELETE CHAT DATA
         removeCookies("user");
+        // DELTEE USER COOKIES
         alert("logged out successfully");
       })
       .catch((error) => {
@@ -83,18 +89,15 @@ const LeftMenu = ({
         <div
           style={{
             marginBottom: 60,
+            width: "100%",
           }}
         >
           {/* USER DETAILS */}
           <div>
             {/* IMG */}
-            <img
-              src={img}
-              alt="profilePic"
-              height={userImgSize}
-              width={userImgSize}
-              className="br10"
-            />
+            <Avatar 
+            // src={"https://lh3.googleusercontent.com/drive-viewer/AFGJ81q-zmJ-x8QWxzPx4NTFi5EAeUDUvE5PG3GC8pGmyz6Izl89x7iiMqDD8fD9jpa-gmeFCIgsJkhT9K0P7T_pyF7BVWsA0Q=s2560"} 
+            name={username} round={"10px"} size={userImgSize}  />
             {/* USERNAME */}
             {/* EMAIL */}
             {open && (

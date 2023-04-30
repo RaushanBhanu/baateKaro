@@ -1,13 +1,15 @@
-import { toCapitalise } from "../common/CommonFunctions";
+import Avatar from 'react-avatar';
 const UserBox = ({
   name = "username",
-  status = "texting...",
-  time = "10h",
+  status,
+  time,
   style = {},
+  img = "",
   activeUser = "",
   setActiveUser = () => {},
+  user,
 }) => {
-  const active = activeUser === name;
+  const active = activeUser?.name === name;
   return (
     <>
       <button
@@ -20,21 +22,27 @@ const UserBox = ({
           ...style,
         }}
         onClick={() => {
-          setActiveUser(name);
+          setActiveUser(user);
         }}
       >
         {/* PROFILE ICON */}
         <div className="">
-          <img className="br10" height={60} width={60} alt="userProfile" />
+          <Avatar name={name} size="60" round="10px"  />
+          {/* <img
+            src={img}
+            className="br10"
+            height={60}
+            width={60}
+            alt="userProfile"
+          /> */}
         </div>
         <div className="ml20 fcfs" style={{}}>
           {/* USERNAME */}
-          <div className="medi14 mb5">{toCapitalise(name)}</div>
+          <div className="medi14 mb5">{name}</div>
           {/* STATUS */}
           <div className="regu13 paraColor">
-            {status}
-            {`  •  `}
-            {time}
+            {status && status + `  •  `}
+            {time && time}
           </div>
         </div>
       </button>

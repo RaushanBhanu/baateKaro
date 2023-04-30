@@ -3,7 +3,9 @@ const Button = ({ text, onclick, disabled, width = "100%" }) => {
     <div>
       <button
         disabled={disabled}
-        className={`pt-3 pb-3 rounded-2xl font-bold w-[${width}]`}
+        className={`pt-${width !== "100%" ? "3" : "4"} pb-${
+          width !== "100%" ? "3" : "4"
+        } rounded-2xl font-semibold w-[${width}]`}
         onClick={onclick}
         style={{
           background: "var(--lBlueGradHori)",

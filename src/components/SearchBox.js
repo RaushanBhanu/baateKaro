@@ -1,14 +1,17 @@
 import { BiSearch } from "react-icons/bi";
 import TextBox from "./common/TextBox";
-import { useState } from "react";
-const SearchBox = () => {
-  const [input, setInput] = useState("");
-  const onSearch = () => {};
+
+const SearchBox = ({
+  onSearch,
+  disabled = false,
+  input,
+  setInput = () => {},
+}) => {
   return (
     <TextBox
       element={
         <>
-          <button onClick={onSearch}>
+          <button disabled={disabled} onClick={onSearch}>
             <BiSearch size={20} color="white" />
           </button>
         </>

@@ -11,27 +11,44 @@ import Home from "./screens/Home";
 import { firebaseApp } from "./firebase";
 
 function App() {
+  const [loading, setloading] = useState(true);
   const auth = getAuth(firebaseApp);
   const [uid, setUid] = useState("");
   const [cookies, setCookies, removeCookies] = useCookies();
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user?.uid) {
-        setUid(user.uid);
-        setCookies(
-          "user",
-          JSON.stringify({
-            uid: user.uid,
-            name: user.displayName,
-            email: user.email,
-          })
-        );
-      } else {
-        removeCookies("user");
-        setUid("");
+    onAuthStateChanged(
+      auth,
+      (user) => {
+        if (user?.uid) {
+          console.log("user", user);
+          setUid(user.uid);
+          setCookies(
+            "user",
+            JSON.stringify({
+              uid: user.uid,
+              name: user.displayName,
+              email: user.email,
+              img: user.photoURL,
+            })
+          );
+        } else {
+          removeCookies("user");
+          setUid("");
+        }
+        setloading(false);
+      },
+      (err) => {
+        setloading(false);
+        console.log(err, "in onAuthStateChanged");
+      },
+      () => {
+        setloading(false);
       }
-    });
+    );
   }, [auth]);
+  if (loading) {
+    return <>Loading</>;
+  }
   if (uid) {
     return <Dashboard />;
   }

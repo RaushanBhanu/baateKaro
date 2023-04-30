@@ -22,6 +22,7 @@ const UserList = ({
                 {...user}
                 style={{ marginBottom: 10, width: 343 }}
                 key={user.name + i}
+                user={user}
               />
             ))}
           </div>

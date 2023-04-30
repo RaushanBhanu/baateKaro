@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/BlueButton";
 import TextBox from "../components/common/TextBox";
 import {
@@ -9,12 +9,15 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { firebaseApp } from "../firebase";
+import { addUserData } from "../queries/firebaseQuery";
+import { serverTimestamp } from "firebase/firestore";
 
 const LoginPage = () => {
   const auth = getAuth(firebaseApp);
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [username, setUser] = useState("");
+  const navigation = useNavigate();
   const [toCreateAccount, setToCreateAccount] = useState(false);
   const handleClick = (event) => {
     // toggle shown state
@@ -28,6 +31,7 @@ const LoginPage = () => {
       .then((userCredential) => {
         // Signed in
         // const user = userCredential.user;
+        navigation("/");
         alert("Logged in successfully 👍!");
         // ...
       })
@@ -44,15 +48,24 @@ const LoginPage = () => {
   const createFirebaseAccount = () => {
     setLoading(true);
     createUserWithEmailAndPassword(auth, email, pass)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         // Signed in
         const user = userCredential.user;
+        // ADD DATA TO TFIREBASE
+        await addUserData(user.uid, {
+          uid: user.uid,
+          name: username,
+          email: user.email,
+          img: user.photoURL,
+          tm: serverTimestamp(),
+        });
         return updateProfile(auth.currentUser, {
           displayName: username,
           //  photoURL: "https://example.com/jane-q-user/profile.jpg"
         })
           .then(() => {
             // Profile updated!
+            navigation("/");
             alert("Account created successfully 👍!");
             // ...
           })
@@ -126,7 +139,7 @@ const LoginPage = () => {
               type="password"
             />
             <Button
-            width="320px"
+              width="320px"
               disabled={loading}
               text={
                 loading
