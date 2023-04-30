@@ -9,6 +9,7 @@ const Dashboard = () => {
   const [cookies] = useCookies(["user"]);
   const [user, setUser] = useState(getCookies("user"));
   const [activeUser, setActiveUser] = useState("Username");
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1000);
   useEffect(() => {
     try {
       setUser(getCookies("user"));
@@ -17,14 +18,28 @@ const Dashboard = () => {
     }
   }, [cookies]);
   console.log("user in dashboard", user);
+  useEffect(() => {
+    // setIsMobile(window.screen.width < 1000);
+    const handleWindowResize = () => {
+      console.log(window.innerWidth);
+      setIsMobile(window.innerWidth<1000)
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
   return (
     <div className="frfs h-[100vh]">
-      <LeftMenu username={user?.name} email={user?.email} img={user?.img} />
+      <LeftMenu username={user?.name} isMobile={isMobile} email={user?.email} img={user?.img} />
       <UserSelector
-      uid={user?.uid}
+        uid={user?.uid}
         username={user?.name}
         activeUser={activeUser}
         setActiveUser={setActiveUser}
+        isMobile={isMobile}
       />
       <MessageArea
         name={activeUser?.name}

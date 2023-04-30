@@ -1,7 +1,7 @@
 import LeftMenuItemsList from "./LeftMenuItemsList";
 import { RiMessage3Fill } from "react-icons/ri";
 import { IoMdNotifications } from "react-icons/io";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LogoutBtn from "./LogoutBtn";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { getAuth, signOut } from "firebase/auth";
@@ -14,6 +14,7 @@ const LeftMenu = ({
   username = "Username",
   email = "username@gmail.com",
   img = "",
+  isMobile
 }) => {
   // LOGOUT
   const auth = getAuth(firebaseApp);
@@ -69,6 +70,9 @@ const LeftMenu = ({
       onClick: onClick,
     },
   ];
+  useEffect(()=>{
+    setOpen(!isMobile)
+  },[isMobile])
   return (
     <>
       <div

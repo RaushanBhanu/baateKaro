@@ -11,6 +11,8 @@ const Button = ({ text, onclick, disabled, width = "100%" }) => {
           background: "var(--lBlueGradHori)",
           boxShadow:
             "0px 17px 24px rgba(0, 0, 0, 0.1), 0px 8px 20px rgba(0, 0, 0, 0.1), inset 0px 18px 21px rgba(255, 255, 255, 0.1), inset 0px 3px 6px rgba(255, 255, 255, 0.4), inset 0px -2px 6px rgba(36, 42, 48, 0.6)",
+          width: width,
+          padding: width !== "100%" ? "10px 0" : "20px 0",
         }}
       >
         {text}

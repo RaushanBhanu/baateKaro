@@ -9,26 +9,27 @@ const UserSelector = ({
   activeUser,
   setActiveUser = () => {},
   uid,
+  isMobile,
 }) => {
   const [foundUsers, setFoundUser] = useState([]);
   const [search, setSearch] = useState("");
 
   const [searching, setSearching] = useState(false);
   const addUserBtn = () => {};
-  const pinnedUsers = [
-    {
-      name: "Username",
-      status: "Typing...",
-      time: "10h",
-      uid: "sadasd",
-    },
-    {
-      name: "User 2",
-      status: "Typing...",
-      time: "10h",
-      uid: "reaasas",
-    },
-  ];
+  // const pinnedUsers = [
+  //   {
+  //     name: "Username",
+  //     status: "Typing...",
+  //     time: "10h",
+  //     uid: "sadasd",
+  //   },
+  //   {
+  //     name: "User 2",
+  //     status: "Typing...",
+  //     time: "10h",
+  //     uid: "reaasas",
+  //   },
+  // ];
   const [allUsers, setAllUsers] = useState([
     {
       name: "Username3",
@@ -46,55 +47,59 @@ const UserSelector = ({
   useEffect(() => {
     // get users
     getUserChats(uid).then((usrs) => {
-      console.log("====================================");
-      console.log(usrs);
-      console.log("====================================");
+      // console.log("====================================");
+      // console.log(usrs);
+      // console.log("====================================");
       if (Array.isArray(usrs) && usrs.length > 0) {
         console.log("herere");
         setAllUsers(usrs);
       }
     });
   }, [username]);
-  console.log('====================================');
-  console.log(allUsers,"allUsers");
-  console.log('====================================');
+  // console.log("====================================");
+  // console.log(allUsers, "allUsers");
+  // console.log("====================================");
   return (
     <>
       <div
         className="p10"
         style={{
-          width: 383,
+          width: isMobile ? 120 : 383,
           background: "var(--blueGrad)",
           height: "100%",
         }}
       >
         <div className="p10">
-          <div className="frcsb mb10">
-            {/* HEADING */}
-            <div className="h2">Messages</div>
-            {/* ADD USER BUTTON */}
-            <button onClick={addUserBtn}>
-              <MdPersonAddAlt size={24} color="white" />
-            </button>
-          </div>
-          {/* SEARCH USRES */}
-          <SearchBox
-            onSearch={async () => {
-              setSearching(true);
-              console.log("search for", search);
-              if (search != username) {
-                const users = await getUserUsingName(search);
-                if (!(users && users.length > 0)) {
-                  alert("no user found");
-                }
-                setFoundUser(users);
-              }
-              setSearching(false);
-            }}
-            disabled={searching}
-            input={search}
-            setInput={setSearch}
-          />
+          {!isMobile && (
+            <>
+              <div className="frcsb mb10">
+                {/* HEADING */}
+                <div className="h2">Messages</div>
+                {/* ADD USER BUTTON */}
+                <button onClick={addUserBtn}>
+                  <MdPersonAddAlt size={24} color="white" />
+                </button>
+              </div>
+              {/* SEARCH USRES */}
+              <SearchBox
+                onSearch={async () => {
+                  setSearching(true);
+                  console.log("search for", search);
+                  if (search != username) {
+                    const users = await getUserUsingName(search);
+                    if (!(users && users.length > 0)) {
+                      alert("no user found");
+                    }
+                    setFoundUser(users);
+                  }
+                  setSearching(false);
+                }}
+                disabled={searching}
+                input={search}
+                setInput={setSearch}
+              />
+            </>
+          )}
           {/* PINNED DROPDOWN */}
           {foundUsers && foundUsers.length > 0 && (
             <div className="mt20">
@@ -116,6 +121,7 @@ const UserSelector = ({
           </div> */}
           <div className="mt20">
             <UserList
+              isMobile={isMobile}
               heading={"All Messages"}
               users={allUsers}
               setActiveUser={setActiveUser}

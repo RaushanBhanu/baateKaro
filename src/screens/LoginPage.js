@@ -89,9 +89,11 @@ const LoginPage = () => {
   return (
     <>
       <div className="h-[35rem]" style={{ background: "var(--lblueGrad)" }}>
-        <Link to={"/"} className="pt-5 pl-12" id="logo">
+      <div className="pt-5 pl-10">
+        <Link to={"/"}id="logo">  
           Baate Karo
         </Link>
+        </div>
         <div className="flex justify-center items-center h-[90vh]">
           <div className="text-center">
             <div className="mb-16" id="logo" style={{ fontSize: "70px" }}>
