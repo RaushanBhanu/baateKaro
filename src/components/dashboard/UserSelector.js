@@ -13,6 +13,7 @@ const UserSelector = ({
 }) => {
   const [foundUsers, setFoundUser] = useState([]);
   const [search, setSearch] = useState("");
+  const [hide, setHide] = useState(isMobile);
 
   const [searching, setSearching] = useState(false);
   const addUserBtn = () => {};
@@ -31,18 +32,18 @@ const UserSelector = ({
   //   },
   // ];
   const [allUsers, setAllUsers] = useState([
-    {
-      name: "Username3",
-      status: "Typing...",
-      time: "10h",
-      uid: "sadasssd",
-    },
-    {
-      name: "User 24",
-      status: "Typing...",
-      time: "10h",
-      uid: "reaas",
-    },
+    // {
+    //   name: "Username3",
+    //   status: "Typing...",
+    //   time: "10h",
+    //   uid: "sadasssd",
+    // },
+    // {
+    //   name: "User 24",
+    //   status: "Typing...",
+    //   time: "10h",
+    //   uid: "reaas",
+    // },
   ]);
   useEffect(() => {
     // get users
@@ -59,18 +60,24 @@ const UserSelector = ({
   // console.log("====================================");
   // console.log(allUsers, "allUsers");
   // console.log("====================================");
+  const onChangeActiveUser=(user)=>{
+    setActiveUser(user)
+    if (!hide && isMobile) {
+      setHide(true)
+    }
+  }
   return (
     <>
       <div
         className="p10"
         style={{
-          width: isMobile ? 120 : 383,
+          width: hide ? 120 : 383,
           background: "var(--blueGrad)",
           height: "100%",
         }}
       >
         <div className="p10">
-          {!isMobile && (
+          {!hide && (
             <>
               <div className="frcsb mb10">
                 {/* HEADING */}
@@ -80,34 +87,42 @@ const UserSelector = ({
                   <MdPersonAddAlt size={24} color="white" />
                 </button>
               </div>
-              {/* SEARCH USRES */}
-              <SearchBox
-                onSearch={async () => {
-                  setSearching(true);
-                  console.log("search for", search);
-                  if (search != username) {
-                    const users = await getUserUsingName(search);
-                    if (!(users && users.length > 0)) {
-                      alert("no user found");
-                    }
-                    setFoundUser(users);
-                  }
-                  setSearching(false);
-                }}
-                disabled={searching}
-                input={search}
-                setInput={setSearch}
-              />
             </>
           )}
+          {/* SEARCH USRES */}
+          <div onClick={()=>{
+            if (isMobile) {
+              setHide(false)
+            }
+          }}>
+          <SearchBox
+            onSearch={async () => {
+              setSearching(true);
+              console.log("search for", search);
+              if (search != username) {
+                const users = await getUserUsingName(search);
+                if (!(users && users.length > 0)) {
+                  alert("no user found");
+                }
+                setFoundUser(users);
+              }
+              setSearching(false);
+            }}
+            disabled={searching}
+            input={search}
+            setInput={setSearch}
+          />
+          </div>
+
           {/* PINNED DROPDOWN */}
           {foundUsers && foundUsers.length > 0 && (
             <div className="mt20">
               <UserList
+                isMobile={hide}
                 heading={"Search Results"}
                 users={foundUsers}
                 activeUser={activeUser}
-                setActiveUser={setActiveUser}
+                setActiveUser={onChangeActiveUser}
               />
             </div>
           )}
@@ -121,10 +136,10 @@ const UserSelector = ({
           </div> */}
           <div className="mt20">
             <UserList
-              isMobile={isMobile}
+              isMobile={hide}
               heading={"All Messages"}
               users={allUsers}
-              setActiveUser={setActiveUser}
+              setActiveUser={onChangeActiveUser}
               activeUser={activeUser}
             />
           </div>

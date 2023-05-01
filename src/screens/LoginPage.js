@@ -141,7 +141,7 @@ const LoginPage = () => {
               type="password"
             />
             <Button
-              width="320px"
+              width="380px"
               disabled={loading}
               text={
                 loading
